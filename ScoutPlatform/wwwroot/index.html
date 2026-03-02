@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ScoutPlatform | Decision-First Football Scouting</title>
+  <meta name="description" content="MCDA-based football scouting platform focused on team fit, explainable rankings, and shortlist decisions." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ScoutPlatform</div>
+    <nav>
+      <a href="#advantage">Advantage</a>
+      <a href="#modules">Modules</a>
+      <a href="#mvp">MVP Plan</a>
+      <a href="#api">API</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Football Scouting Intelligence</p>
+      <h1>Build the platform clubs use to pick the right player for their style.</h1>
+      <p class="lead">
+        ScoutPlatform is a decision engine for scouting teams. It ranks candidates with MCDA,
+        explains every score, and turns team context into shortlist-ready recommendations.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#mvp">See MVP Roadmap</a>
+        <a class="btn ghost" href="#advantage">Why This Wins</a>
+      </div>
+    </section>
+
+    <section id="advantage" class="panel">
+      <h2>Where You Win vs Wyscout-Type Tools</h2>
+      <div class="grid two">
+        <article>
+          <h3>Your edge</h3>
+          <ul>
+            <li>Decision intelligence first, not raw data volume.</li>
+            <li>Team-specific tactical compatibility scoring.</li>
+            <li>MCDA weights and hard constraints per team profile.</li>
+            <li>Explainable score breakdown by metric contribution.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Known limitations at launch</h3>
+          <ul>
+            <li>Smaller player dataset than enterprise incumbents.</li>
+            <li>Limited video layer in early versions.</li>
+            <li>Depends on clean ingestion and metric quality.</li>
+            <li>Needs proof from real scout workflows.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="modules" class="panel">
+      <h2>Core Product Modules</h2>
+      <div class="grid three">
+        <article>
+          <h3>Identity & Organizations</h3>
+          <p>Clubs, users, roles, and tenant isolation by organization.</p>
+        </article>
+        <article>
+          <h3>Player Intelligence</h3>
+          <p>Profiles, seasonal metrics, and candidate filters.</p>
+        </article>
+        <article>
+          <h3>Team Profile</h3>
+          <p>Style, formation, budget, and target role constraints.</p>
+        </article>
+        <article>
+          <h3>Suitability Engine (MCDA)</h3>
+          <p>Normalization, weighted scoring, penalties, and explainability.</p>
+        </article>
+        <article>
+          <h3>Shortlists & Reports</h3>
+          <p>Ranked lists, notes/tags, and shareable output for decisions.</p>
+        </article>
+        <article>
+          <h3>Data Ingestion</h3>
+          <p>Async import and recalculation jobs with versioned scores.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="mvp" class="panel">
+      <h2>MVP Delivery Order</h2>
+      <ol>
+        <li>Create DB schema + migrations + metric definitions seed.</li>
+        <li>Build players CRUD and metrics ingestion endpoints.</li>
+        <li>Build team profile + weights/constraints endpoints.</li>
+        <li>Ship pure MCDA ranking engine with breakdown response.</li>
+        <li>Persist suitability scores and background recalculation.</li>
+        <li>Add shortlists, notes, tags, and export preparation.</li>
+      </ol>
+    </section>
+
+    <section id="api" class="panel">
+      <h2>API v1 Shape</h2>
+      <div class="api-grid">
+        <article>
+          <h3>Players</h3>
+          <code>GET /api/v1/players?search=&amp;position=&amp;ageMin=&amp;ageMax=</code>
+          <code>GET /api/v1/players/{id}</code>
+          <code>GET /api/v1/players/{id}/metrics?seasonId=</code>
+        </article>
+        <article>
+          <h3>Team Profiles</h3>
+          <code>POST /api/v1/team-profiles</code>
+          <code>PUT /api/v1/team-profiles/{id}</code>
+          <code>PUT /api/v1/team-profiles/{id}/weights</code>
+        </article>
+        <article>
+          <h3>Suitability</h3>
+          <code>POST /api/v1/team-profiles/{id}/scores/recalculate</code>
+          <code>GET /api/v1/team-profiles/{id}/rankings</code>
+          <code>GET /api/v1/team-profiles/{id}/rankings/{playerId}</code>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
